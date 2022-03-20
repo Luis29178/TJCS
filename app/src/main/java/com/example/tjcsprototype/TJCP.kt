@@ -8,7 +8,7 @@ import android.widget.ImageView
 
 class TJCP : AppCompatActivity() {
 
-    val MainMap = findViewById(R.id.CostumsMap) as ImageView
+
 
     companion object{
         var path = Path()

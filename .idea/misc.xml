@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Luis/AndroidStudioProjects/TJCSPrototype/app/src/main/res/layout-land/activity_map_pathing.xml" value="0.33" />
+        <entry key="..\:/Users/Luis/AndroidStudioProjects/TJCSPrototype/app/src/main/res/layout-land/activity_map_pathing.xml" value="0.3001579778830964" />
         <entry key="..\:/Users/Luis/AndroidStudioProjects/TJCSPrototype/app/src/main/res/layout/activity_map_pathing.xml" value="0.22" />
         <entry key="..\:/Users/Luis/AndroidStudioProjects/TJCSPrototype/app/src/main/res/layout/mapview.xml" value="1.1125" />
+        <entry key="..\:/Users/Luis/AndroidStudioProjects/TJCSPrototype/app/src/main/res/layout/paintviewer.xml" value="0.1" />
       </map>
     </option>
   </component>
