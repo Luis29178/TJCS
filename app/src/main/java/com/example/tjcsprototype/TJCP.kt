@@ -8,5 +8,7 @@ class TJCP : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_pathing)
 
+
+
     }
 }
