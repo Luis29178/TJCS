@@ -16,6 +16,7 @@ class PaintView : View{
 
     var params : ViewGroup.LayoutParams? = null
 
+
     companion object{
         var PathL = arrayListOf<Path>()
         var ColorL = ArrayList<Int>()
@@ -69,8 +70,10 @@ class PaintView : View{
                 PathL.add(path)
                 ColorL.add(CurrBrush)
             }
+            MotionEvent.ACTION_UP -> {
+                ResetPath() // replace with sequential delete with bitmap array to save states of the path beeing drawn to then reset it bit by bit will give smooth transition
 
-
+            }
             else -> return false
 
         }
@@ -78,6 +81,25 @@ class PaintView : View{
 
         postInvalidate()        //informs non-ui threds of changes on the UI
         return false;
+
+    }
+
+    private fun ResetPath() {
+
+
+
+
+        for (i in PathL.indices){
+
+            for (i in PathL.indices){
+                PathL[i].reset();
+
+
+                invalidate() //informs non-ui threds of changes on the UI
+            }
+
+
+        }
 
     }
 
@@ -89,7 +111,13 @@ class PaintView : View{
             canvas.drawPath(PathL[i], brush)
             invalidate() //informs non-ui threds of changes on the UI
         }
+
+
+
     }
+
+
+
 
 
 }
