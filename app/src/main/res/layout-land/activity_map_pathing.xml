@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/CustumsMap"
+        android:id="@+id/CostumsMap"
         android:layout_width="732dp"
         android:layout_height="382dp"
         app:layout_constraintEnd_toEndOf="parent"
