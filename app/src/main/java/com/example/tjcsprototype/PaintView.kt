@@ -61,6 +61,7 @@ class PaintView : View{
 
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
+
                 path.moveTo(x, y)
                 return true
 
@@ -85,21 +86,22 @@ class PaintView : View{
     }
 
     private fun ResetPath() {
+        /// use bitmapse to save previous states befor drawn then use them to switch back and forth to slowly delete the drawn line
 
 
 
+        /// temp
 
-        for (i in PathL.indices){
 
             for (i in PathL.indices){
+                Thread.sleep(25)
                 PathL[i].reset();
-
-
                 invalidate() //informs non-ui threds of changes on the UI
+
             }
 
 
-        }
+
 
     }
 
