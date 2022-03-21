@@ -3,17 +3,17 @@ package com.example.tjcsprototype
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.graphics.set
 
 
 class PingView : View {
-
-    val holdchecker = false
-
-    val pingDrawable = BitmapFactory.decodeResource(resources, R.drawable.ping)
+    var params: ViewGroup.LayoutParams? = null
+    var pingDrawable: Drawable? = null
 
     var xpos = x
     var ypos = y
@@ -39,6 +39,11 @@ class PingView : View {
 
     private fun init() {
 
+        params = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
 
     }
 
@@ -61,7 +66,7 @@ class PingView : View {
                 }
                 if (trigger < System.currentTimeMillis() && !braker)
                 {
-                    pingDrawable.set(xpos.toInt(), ypos.toInt(), resources.getColor(R.color.black))
+                    pingDrawable = resources.getDrawable(R.drawable.ping,null)
                 return true
                 }
             }
@@ -84,9 +89,6 @@ class PingView : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val piing = resources.getDrawable(R.drawable.ping, null)
-        piing.setBounds(0, 0, x.toInt(), y.toInt())
-        piing.draw(canvas)
         invalidate() //informs non-ui threds of changes on the UI
 
 

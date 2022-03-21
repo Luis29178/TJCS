@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -13,15 +14,17 @@ import androidx.core.graphics.set
 import com.example.tjcsprototype.TJCP.Companion.brush
 import com.example.tjcsprototype.TJCP.Companion.path
 
+
 class PaintView : View {
 
     var params: ViewGroup.LayoutParams? = null
 
 
-    companion object {
+        companion object {
         var PathL = arrayListOf<Path>()
         var ColorL = ArrayList<Int>()
         var CurrBrush = Color.BLACK
+
 
 
     }
@@ -116,7 +119,10 @@ class PaintView : View {
             brush.setColor(ColorL[i])
             canvas.drawPath(PathL[i], brush)
             invalidate() //informs non-ui threds of changes on the UI
+
         }
+
+
 
 
     }
