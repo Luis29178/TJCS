@@ -13,6 +13,7 @@ class TJCP : AppCompatActivity() {
     companion object{
         var path = Path()
         var brush = Paint()
+        var ping = R.drawable.ping;
 
     }
 
