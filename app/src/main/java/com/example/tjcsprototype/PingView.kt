@@ -19,6 +19,11 @@ class PingView : View {
     var ypos = y
 
 
+companion object{
+    var trigger = 1
+
+}
+
     constructor(context: Context) : this(context, null) {
         init()
 
@@ -52,45 +57,54 @@ class PingView : View {
 
         xpos = event.x
         ypos = event.y
-        var braker = false
+
 
         // val pingDrawable = resources.getDrawable(R.drawable.ping)
 
 
-        val trigger = System.currentTimeMillis() + 1900 //time now + 1 seconds 900 mils
+         //time now + x
 
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                if (braker) {
-                    return false
+                if (trigger == null) {
+                    trigger = (System.currentTimeMillis() + 2000).toInt()
+                    return true
                 }
-                if (trigger < System.currentTimeMillis() && !braker)
-                {
-                    pingDrawable = resources.getDrawable(R.drawable.ping,null)
                 return true
-                }
             }
 
             MotionEvent.ACTION_UP -> {
-                braker = true
-                return false
+                trigger = 1
+                return true
             }
             MotionEvent.ACTION_MOVE -> {
-                braker = true
-                return false
+                trigger = 1
+                return true
+
             }
+            else -> return false
 
         }
-
+        postInvalidate()
         return false
+
     }
 
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        invalidate() //informs non-ui threds of changes on the UI
+        if (trigger < System.currentTimeMillis() && trigger != 1) {
+            var xoff = xpos.toInt() + (pingDrawable?.intrinsicWidth ?: return)
+            var yoff = ypos.toInt() - (pingDrawable?.intrinsicHeight ?: return)
 
+            pingDrawable!!.bounds.set(xpos.toInt(), ypos.toInt(), xoff.toInt(), yoff.toInt())
+
+
+            pingDrawable!!.draw(canvas)
+
+            invalidate() //informs non-ui threds of changes on the UI
+        }
 
     }
 
