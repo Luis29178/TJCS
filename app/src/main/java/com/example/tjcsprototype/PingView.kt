@@ -66,7 +66,7 @@ companion object{
 
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                if (trigger == null) {
+                if (trigger == 1) {
                     trigger = (System.currentTimeMillis() + 2000).toInt()
                     return true
                 }
@@ -74,14 +74,15 @@ companion object{
             }
 
             MotionEvent.ACTION_UP -> {
-                trigger = 1
-                return true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                trigger = 1
-                return true
+                trigger = 0
 
             }
+            MotionEvent.ACTION_MOVE -> {
+                trigger = 0
+
+
+            }
+
             else -> return false
 
         }
