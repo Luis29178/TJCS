@@ -1,8 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<com.example.tjcsprototype.PaintView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+
+    <com.example.tjcsprototype.PaintView
+        android:id="@+id/paintView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="1464dp"
+        android:layout_height="1437dp"
+        app:srcCompat="@drawable/background_ui"
+        tools:layout_editor_absoluteX="-487dp"
+        tools:layout_editor_absoluteY="-411dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="406dp"
+        android:layout_height="71dp"
+        android:background="@android:color/transparent"
+        android:text="Escape From Tarkove"
+        android:textSize="24dp"
+        android:typeface="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="274dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item Traker"
+        android:background="@android:color/transparent"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="439dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:background="@android:color/transparent"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="654dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Path"
+        android:background="@android:color/transparent"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="360dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
