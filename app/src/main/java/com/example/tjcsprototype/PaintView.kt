@@ -1,10 +1,7 @@
 package com.example.tjcsprototype
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -17,14 +14,15 @@ import com.example.tjcsprototype.TJCP.Companion.path
 
 class PaintView : View {
 
+    var cRadi = 0F
+    var cordinates: Array<Float> = arrayOf(0F, 0F)
     var params: ViewGroup.LayoutParams? = null
+    var ClearCheck = false
 
-
-        companion object {
+    companion object {
         var PathL = arrayListOf<Path>()
         var ColorL = ArrayList<Int>()
         var CurrBrush = Color.BLACK
-
 
 
     }
@@ -65,20 +63,26 @@ class PaintView : View {
         var x = event.x
         var y = event.y
 
+        var XYcord = arrayOf(x, y)
+
+
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
+                cordinates = XYcord
+                cRadi = 25F
 
 
-                path.moveTo(x, y)
+
                 return true
 
             }
             MotionEvent.ACTION_MOVE -> {
-                path.lineTo(x, y)
-                PathL.add(path)
-                ColorL.add(CurrBrush)
+
+
             }
             MotionEvent.ACTION_UP -> {
+                ClearCheck = true;
                 ResetPath() // replace with sequential delete with bitmap array to save states of the path beeing drawn to then reset it bit by bit will give smooth transition
 
             }
@@ -99,14 +103,6 @@ class PaintView : View {
         /// temp
 
 
-        for (i in PathL.indices) {
-            Thread.sleep(25)
-            PathL[i].reset();
-            invalidate() //informs non-ui threds of changes on the UI
-
-        }
-
-
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -114,15 +110,27 @@ class PaintView : View {
 
 
 
-        for (i in PathL.indices) {
 
-            brush.setColor(ColorL[i])
-            canvas.drawPath(PathL[i], brush)
-            invalidate() //informs non-ui threds of changes on the UI
+        if (ClearCheck) {
+            Thread.sleep(2000)
+            // var bitmapcelar = BitmapFactory.decodeResource(resources, R.drawable.custumsmapog)
+            //canvas.drawColor(0, PorterDuff.Mode.CLEAR)
+            //canvas.drawBitmap(bitmapcelar, 0F, 0F, brush)
+            //canvas.setBitmap(bitmapcelar)
+            cordinates = arrayOf(0F, 0F)
 
+            canvas.drawCircle(cordinates[0], cordinates[1], 0F, brush)
+            ClearCheck = false
+            cRadi = 0F
+            invalidate()
+
+        } else {
+            canvas.drawCircle(cordinates[0], cordinates[1], 25F, brush)
+            invalidate()
         }
 
 
+        //invalidate() //informs non-ui threds of changes on the UI
 
 
     }
